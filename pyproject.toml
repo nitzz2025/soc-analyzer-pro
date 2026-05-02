@@ -1,0 +1,6 @@
+[project]
+name = "soc-analyzer-pro"
+version = "0.1.0"
+dependencies = [
+    "rich",
+]
