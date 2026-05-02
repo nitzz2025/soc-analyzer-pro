@@ -1,0 +1,29 @@
+name: GHCR Release Pipeline
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: soc_analyzer_pro/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/nitzz2025/soc-analyzer-pro:latest
+            ghcr.io/nitzz2025/soc-analyzer-pro:${{ github.ref_name }}

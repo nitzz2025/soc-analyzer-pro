@@ -1,0 +1,7 @@
+web_activity.log
+sample_firewall.log
+forensic_report.csv
+
+# Added by remediation script
+*.log
+*.csv
