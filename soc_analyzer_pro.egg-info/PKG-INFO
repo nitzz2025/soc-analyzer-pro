@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: soc_analyzer_pro
+Version: 3.1.0
+Summary: Enterprise-grade SOC Threat Analyzer with Geo-IP Intelligence
+Requires-Python: >=3.10
+Requires-Dist: aiohttp==3.9.1
+Requires-Dist: python-dotenv==1.0.0
+Requires-Dist: rich==13.7.0
+Requires-Dist: ipinfo>=4.4.1
