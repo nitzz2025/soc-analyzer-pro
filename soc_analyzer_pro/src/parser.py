@@ -1,7 +1,9 @@
 import re
 
-def parse_log_line(line: str):
-    """Extracts SRC, DST, and PORT from firewall logs."""
-    pattern = r"SRC=(?P<src>[\d\.]+) DST=(?P<dst>[\d\.]+) PORT=(?P<port>\d+)"
-    match = re.search(pattern, line)
-    return match.groupdict() if match else None
+def extract_log_data(line):
+    # Improved regex to capture IP and the trailing port
+    pattern = r'(?P<ip>\d{1,3}(?:\.\d{1,3}){3}).*?\s(\d+)\s(?P<port>\d+)$'
+    match = re.search(pattern, line.strip())
+    if match:
+        return match.group("ip"), int(match.group("port"))
+    return None, None
